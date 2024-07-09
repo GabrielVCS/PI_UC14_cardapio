@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vitrine - Cadastro de Clientes</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: #181717;
+                color: white;
+            }
+            .logo-barra {
+                background: linear-gradient(to bottom, yellow 20%, transparent 100%);
+                text-align: left;
+                padding: 5px 0;
+            }
+            .logo-barra img {
+                max-width: 100%;
+                height: 130px;
+                margin-left: 25px;
+            }
+            .buttonsE {
+                position: absolute;
+                top: 50px;
+                left: 250px;
+                z-index: 3;
+            }
+            .buttonsE button {
+                display: inline-block;
+                margin-right: 50px;
+                width: 201px;
+                height: 35px;
+                margin-bottom: 10%;
+                border: none;
+                color: white;
+                font-size: 20px;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .buttonsE button:hover {
+                background-color: #0056b3;
+            }
+            .comando-geral {
+                margin-top: 30px;
+            }
+            .form-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .form-container .form-group {
+                flex: 1 1 45%;
+                margin-top: 20px;
+            }
+            .form-container label {
+                margin-bottom: 0px;
+            }
+            .form-container input,
+            .form-container textarea {
+                width: 100%;
+                max-width: 530px;
+                padding: 20px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+
+            }
+            .form-container .form-group-buttons {
+                flex: 1 1 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 15px;
+            }
+            .form-container .form-group-buttons button {
+                width: 48%;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                background-color: #FFA500;
+                color: #181717;
+                cursor: pointer;
+            }
+            .form-container .form-group-buttons button:hover {
+                background-color: #e69500;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Barra de logo -->
+        <div class="logo-barra">
+            <img src="logo-pi.png" alt="logo-esquerda" />
+            <div class="buttonsE">
+                <a href="Tela2Teste.html"><button>Inicio</button></a>
+                <a href="Tela3Teste.html"><button>Cardápio</button></a>
+                <a href="TelaCadCliente.html"><button>Minha conta</button></a>
+                <a href="TelaCadCliente.html"><button>Cadastro cliente</button></a>
+            </div>
+        </div>
+
+        <div class="container comando-geral">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-dark p-3 rounded text-center text-white">
+                        <h1>FAÇA SEU CADASTRO!</h1>
+                        <p>Venha fazer parte da nossa comunidade! Fazendo seu cadastro você passa a ter descontos exclusivos em nossos produtos, então não perca tempo e faça já seu cadastro!</p>
+                    </div>
+
+                    <form action="#" th:action="@{/enviar-dados}" th:object="${cliente}" method="POST" class="form-container">
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" th:field="*{nome}" placeholder="Insira seu nome" class="form-control mt-4 col-4" required>
+                            <span class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" th:field="*{email}" placeholder="Insira seu email" class="form-control mt-4 col-4" required>
+                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">Cpf:</label>
+                            <input type="text" id="cpf" th:field="*{cpf}" placeholder="Insira seu CPF" class="form-control mt-4 col-4">
+                            <span class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" id="telefone" th:field="*{telefone}" placeholder="Insira seu telefone" class="form-control mt-4 col-4">
+                            <span class="text-danger" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+                        </div>
+                        <div class="form-group-buttons">
+                            <button type="reset" class="btn btn-warning mt-4">Limpar</button>
+                            <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <a th:href="@{/}">Retornar</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>
