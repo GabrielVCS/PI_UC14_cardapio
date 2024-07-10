@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cadastro produto</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Cadastro produto</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <style>
+        <style>
             body {
                 background-color: #181717;
                 color: white;
@@ -37,7 +37,7 @@
                 height: 35px;
                 margin-bottom: 10%;
                 border: hsl(from color h s l);
-                border: none;
+                /*border: none;*//*essa função tira a borda dos botões na barra superior*/
                 color: white;
                 font-size: 20px;
                 border-radius: 10px;
@@ -60,7 +60,7 @@
             }
             .form-container label {
                 margin-bottom: 0px;
-                
+
             }
             .form-container input,
             .form-container textarea {
@@ -91,91 +91,91 @@
                 background-color: #e69500;
             }
         </style>
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div class="logo-barra">
-        <img src="logo-pi.png" alt="logo-esquerda" />
+        <div class="logo-barra">
+            <img src="logo-pi.png" alt="logo-esquerda" />
 
-        <div class="buttonsE">
-            <a href="Tela2Teste.html"><button>Inicio</button></a>
-            <a href="Tela3Teste.html"><button>Cardápio</button></a>
-            <a href="TelaCadCliente.html"><button>Minha conta</button></a>
-            <a href="TelaCadCliente.html"><button>Carrinho</button></a>
+            <div class="buttonsE">
+                <a href="telaInicial.html"><button>Inicio</button></a>
+                <a href="telaCardapio.html"><button>Cardápio</button></a>
+                <a href="telaCadCliente.html"><button>Minha conta</button></a>
+                <a href="TelaCadProduto.html"><button>Carrinho</button></a>
+            </div>
         </div>
-    </div>
 
-    <div class="container comando-geral">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="bg-dark p-3 rounded text-left text-white">
-                    <div class="bg-dark p-3 rounded text-center text-white">
-                        <h1>CADASTRAR NOVO PRODUTO</h1>
+        <div class="container comando-geral">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-dark p-3 rounded text-left text-white">
+                        <div class="bg-dark p-3 rounded text-center text-white">
+                            <h1>CADASTRAR NOVO PRODUTO</h1>
+                        </div>
+
+                        <form th:action="@{/enviar-dados}" th:object="${produto}" method="post" class="form-container">
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" id="nome" th:field="*{nome}" placeholder="Insira o nome do produto" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preco">Preço:</label>
+                                <input type="number" id="preco" th:field="*{preco}" placeholder="Insira o preço do produto" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ingredientes">Ingredientes:</label>
+                                <input type="text" id="ingredientes" th:field="*{ingredientes}" placeholder="Insira os ingredientes do produto" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="calorias">Calorias:</label>
+                                <input type="number" id="calorias" th:field="*{calorias}" placeholder="Insira a quantidade de calorias" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('calorias')}" th:errors="*{calorias}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carboidratos">Carboidratos:</label>
+                                <input type="number" id="carboidratos" th:field="*{carboidratos}" placeholder="Insira a quantidade de carboidratos" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('carboidratos')}" th:errors="*{carboidratos}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="proteinas">Proteínas:</label>
+                                <input type="number" id="proteinas" th:field="*{proteinas}" placeholder="Insira a quantidade de proteínas" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('proteinas')}" th:errors="*{proteinas}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gorduras">Gorduras:</label>
+                                <input type="number" id="gorduras" th:field="*{gorduras}" placeholder="Insira a quantidade de gorduras" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('gorduras')}" th:errors="*{gorduras}"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categoria">Categoria:</label>
+                                <input type="text" id="categoria" th:field="*{categoria}" placeholder="Insira a categoria do produto" required>
+                                <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></span>
+                            </div>
+
+                            <div class="form-group-buttons">
+                                <button type="reset" class="btn btn-warning mt-4" style="margin-right: 20px;">Limpar</button>
+                                <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                            </div>
+                        </form>
                     </div>
-
-                    <form th:action="@{/enviar-dados}" th:object="${produto}" method="post" class="form-container">
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" th:field="*{nome}" placeholder="Insira o nome do produto" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preco">Preço:</label>
-                            <input type="number" id="preco" th:field="*{preco}" placeholder="Insira o preço do produto" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="ingredientes">Ingredientes:</label>
-                            <input type="text" id="ingredientes" th:field="*{ingredientes}" placeholder="Insira os ingredientes do produto" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="calorias">Calorias:</label>
-                            <input type="number" id="calorias" th:field="*{calorias}" placeholder="Insira a quantidade de calorias" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('calorias')}" th:errors="*{calorias}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="carboidratos">Carboidratos:</label>
-                            <input type="number" id="carboidratos" th:field="*{carboidratos}" placeholder="Insira a quantidade de carboidratos" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('carboidratos')}" th:errors="*{carboidratos}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="proteinas">Proteínas:</label>
-                            <input type="number" id="proteinas" th:field="*{proteinas}" placeholder="Insira a quantidade de proteínas" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('proteinas')}" th:errors="*{proteinas}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="gorduras">Gorduras:</label>
-                            <input type="number" id="gorduras" th:field="*{gorduras}" placeholder="Insira a quantidade de gorduras" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('gorduras')}" th:errors="*{gorduras}"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="categoria">Categoria:</label>
-                            <input type="text" id="categoria" th:field="*{categoria}" placeholder="Insira a categoria do produto" required>
-                            <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></span>
-                        </div>
-
-                        <div class="form-group-buttons">
-                            <button type="reset" class="btn btn-warning mt-4" style="margin-right: 20px;">Limpar</button>
-                            <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="bootstrap4.1.3/js/bootstrap.bundle.min.js"></script><!--Usar a versão 4.1.3-->
-    <script src="reserva.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="reserva.js"></script>
 
-</body>
+    </body>
 
 </html>
