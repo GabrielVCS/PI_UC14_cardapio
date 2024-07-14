@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #181717;
+            color: white;
+        }
+
+        .logo-barra {
+            background: linear-gradient(to bottom, yellow 20%, transparent 100%);
+            text-align: left;
+            padding: 5px 0;
+        }
+
+        .logo-barra img {
+            max-width: 100%;
+            height: 130px;
+            margin-left: 25px;
+        }
+
+        .buttonsE {
+            position: absolute;
+            top: 50px;
+            left: 250px;
+            z-index: 3;
+        }
+
+        .buttonsE button {
+            display: inline-block;
+            margin-right: 50px;
+            width: 201px;
+            height: 35px;
+            margin-bottom: 10%;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .buttonsE button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #343a40;
+            border-radius: 10px;
+        }
+
+        .cart-item img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        .item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-button {
+            width: 30px;
+            height: 30px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .quantity {
+            text-align: center;
+            font-size: 18px;
+            width: 40px;
+        }
+        
+        .quantity-button {
+            text-align: center;
+            font-size: 18px;
+            width: 40px;
+        }
+
+        .delete-button {
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-button img {
+            width: 100%;
+            height: 90%;
+        }
+
+        .sub-total {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .total-section {
+            margin-top: 20px;
+            border-top: 2px solid #fff;
+            padding-top: 10px;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .actions button {
+            width: 250px;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .continue-button {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .checkout-button {
+            background-color: #FFA500;
+            color: #181717;
+        }
+        
+        .item-name {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de logo -->
+    <div class="logo-barra">
+        <img src="logo-pi.png" alt="logo-esquerda">
+
+        <!-- Botões de navegação -->
+        <div class="buttonsE">
+            <a href="telaInicial.html"><button>Inicio</button></a>
+            <a href="telaCardapio.html"><button>Cardápio</button></a>
+            <a href="telaCadCliente.html"><button>Minha conta</button></a>
+            <a href="telaCarrinho.html"><button>Carrinho</button></a>
+        </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="container">
+        <!-- Item no carrinho -->
+        <div class="cart-item">
+            <img src="Lanche1C.jpg" alt="Lanche 1">
+            <div class="item-details">
+                <div class="item-name">1X - Hamburguerão original</div>
+                <div class="item-quantity">
+                    <div class="quantity-button">-</div>
+                    <div class="quantity">1</div>
+                    <div class="quantity-button">+</div>
+                    <button class="delete-button"><img src="lixeira-pi.png" alt="Remover"></button>
+                </div>
+            </div>
+            <div class="item-price">$10.00</div>
+        </div>
+
+        <!-- Subtotal e Total -->
+        <div class="sub-total">
+        <div class="subtotal">Subtotal: $10.00</div>
+        <div class="entrega">Entrega: $7,99</div>
+        <div class="total-section">
+            <div class="total">Total: $17,99</div>
+            </div>
+            <div class="actions">
+                <button class="continue-button">Continuar comprando</button>
+                <a href="telaPagamento.html"><button class="checkout-button">Finalizar pedido</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
