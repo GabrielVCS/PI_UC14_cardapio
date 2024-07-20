@@ -87,14 +87,14 @@
 
         <!-- Barra de logo -->
         <div class="logo-barra">
-            <img src="logo-pi.png" alt="logo-esquerda">
+            <img src="/logo-pi.png" alt="logo-esquerda" />
 
             <!-- Botões de navegação -->
             <div class="buttonsE">
-                <a href="telaInicial.html"><button>Inicio</button></a>
-                <a href="telaCardapio.html"><button>Cardápio</button></a>
-                <a href="telaCadCliente.html"><button>Minha conta</button></a>
-                <a href="TelaCarrinho.html"><button>Carrinho</button></a>
+                <a th:href="@{/}"><button>Início</button></a>
+                <a th:href="@{/clientes/cardapio}"><button>Cardápio</button></a>
+                <a th:href="@{/clientes/novo}"><button>Minha conta</button></a>
+                <a th:href="@{/clientes/carrinho}"><button>Carrinho</button></a>
             </div>
         </div>
 

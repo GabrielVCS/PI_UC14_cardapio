@@ -1,300 +1,268 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Pagamento</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <style>
-            body {
-                background-color: #181717;
-                color: white;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        /* Seus estilos existentes */
+        body {
+            background-color: #181717;
+            color: white;
+        }
 
-            .logo-barra {
-                background: linear-gradient(to bottom, yellow 20%, transparent 100%);
-                text-align: left;
-                padding: 5px 0;
-            }
+        .logo-barra {
+            background: linear-gradient(to bottom, yellow 20%, transparent 100%);
+            text-align: left;
+            padding: 5px 0;
+        }
 
-            .logo-barra img {
-                max-width: 100%;
-                height: 130px;
-                margin-left: 25px;
-            }
+        .logo-barra img {
+            max-width: 100%;
+            height: 130px;
+            margin-left: 25px;
+        }
 
-            .buttonsE {
-                position: absolute;
-                top: 50px;
-                left: 250px;
-                z-index: 3;
-            }
+        .buttonsE {
+            position: absolute;
+            top: 50px;
+            left: 250px;
+            z-index: 3;
+        }
 
-            .buttonsE button {
-                display: inline-block;
-                margin-right: 50px;
-                width: 201px;
-                height: 35px;
-                margin-bottom: 10%;
-                color: white;
-                font-size: 20px;
-                border-radius: 10px;
-                background-color: rgba(0, 0, 0, 0.5);
-            }
+        button {
+            display: inline-block;
+            margin-right: 50px;
+            width: 201px;
+            height: 35px;
+            margin-bottom: 10%;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-            .buttonsE button:hover {
-                background-color: #0056b3;
-            }
+        button:hover {
+            background-color: #0056b3;
+        }
 
-            .container {
-                margin-top: 20px;
-            }
+        .container, h2 {
+            margin-top: 30px;
+        }
+        
+        h2 {
+            margin-left: 432px;
+        }
 
-            .card {
-                background-color: #343a40;
-                color: white;
-                border-radius: 10px;
-                padding: 20px;
-                margin: 10px;
-            }
+        .card, h3 {
+            background-color: #343a40;
+            color: white;
+            margin: 10px;
+            border-radius: 15px;
+        }
 
-            .card h3 {
-                margin-bottom: 20px;
-            }
+        .card img {
+            border-radius: 35px;
+        }
+        
+        h3 {
+            border-radius: 10px;
+            text-align: center;
+        }
 
-            .form-group label {
-                color: white;
-            }
+        .card-text {
+            padding: 10px;
+        }
 
-            .btn-custom {
-                width: 40%;
-                justify-content: space-between;
-                display: flex;
-                height: 50px;
-                font-size: 20px;
-                border-radius: 10px;
-                margin-top: 10px;
-            }
+        .table th,
+        .table td {
+            text-align: center;
+        }
 
-            .btn-custom2 {
-                width: 100%;
-                height: 50px;
-                font-size: 20px;
-                border-radius: 10px;
-                margin-top: 10px;
-            }
+        .btn-custom2 {
+            background-color: #FFA500;
+            color: #181717;
+            border: none;
+            border-radius: 5px;
+        }
 
-            .btn-clear {
-                background-color: #dc3545;
-                color: white;
-            }
+        .btn-custom2:hover {
+            background-color: #e69500;
+        }
 
-            .btn-next {
-                background-color: #0056b3;
-                color: white;
-            }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            color: white;
+        }
 
-            .btn-continue {
-                background-color: #0056b3;
-                color: white;
-                margin-bottom: 10px;
-            }
+        .btn-success:hover {
+            background-color: #218838;
+        }
 
-            .btn-checkout {
-                background-color: #FFA500;
-                color: #181717;
-            }
+        .payment-form {
+            margin-top: 20px;
+        }
 
-            .summary-item {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-            }
+        .payment-form input {
+            margin-bottom: 10px;
+        }
 
-            .total {
-                font-size: 24px;
-                font-weight: bold;
-            }
+        .payment-options {
+            margin-bottom: 20px;
+        }
 
-            /* Painel de pagamento */
-            #painelPix,
-            #painelCartao {
-                display: none;
-            }
+        .payment-details {
+            display: none;
+        }
 
-            /* Estilização dos campos de cartão de crédito */
-            #painelCartao label {
-                display: block;
-                margin-top: 10px;
-            }
+        .payment-details.active {
+            display: block;
+        }
+    </style>
+</head>
 
-            #painelCartao input,
-            #painelCartao select {
-                margin-bottom: 10px;
-                width: 100%;
-                padding: 8px;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-            }
-        </style>
-    </head>
+<body>
 
-    <body>
+    <!-- Barra de logo -->
+    <div class="logo-barra">
+        <img src="/logo-pi.png" alt="logo-esquerda" />
+        <!-- Botões de navegação -->
+        <div class="buttonsE">
+            <a href="/"><button>Início</button></a>
+            <a href="/clientes/cardapio"><button>Cardápio</button></a>
+            <a href="/clientes/novo"><button>Minha conta</button></a>
+            <a href="/clientes/carrinho"><button>Carrinho</button></a>
+        </div>
+    </div>
 
-        <!-- Barra de logo -->
-        <div class="logo-barra">
-            <img src="logo-pi.png" alt="logo-esquerda">
-
-            <!-- Botões de navegação -->
-            <div class="buttonsE">
-                <a href="telaInicial.html"><button>Inicio</button></a>
-                <a href="telaCardapio.html"><button>Cardápio</button></a>
-                <a href="telaCadCliente.html"><button>Minha conta</button></a>
-                <a href="telaCarrinho.html"><button>Carrinho</button></a>
+    <!-- Conteúdo da página -->
+    <div class="container">
+        <h2>Finalizar Compra</h2>
+        <div class="card">
+            <h3>Resumo da Compra</h3>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-items">
+                    <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between">
+                <h3>Total: R$ <span id="checkout-total">0.00</span></h3>
             </div>
         </div>
 
-        <!-- Conteúdo da página -->
-        <div class="container">
-            <div class="row">
-                <!-- Card 1: Entrega e Forma de Pagamento -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <h3>Entrega e Forma de Pagamento</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="endereco">Endereço</label>
-                                <input type="text" class="form-control" id="endereco" placeholder="Digite o endereço">
-                            </div>
-                            <div class="form-group">
-                                <label for="cep">CEP</label>
-                                <input type="text" class="form-control" id="cep" placeholder="Digite o CEP">
-                            </div>
-                            <div class="form-group">
-                                <label for="forma-pagamento">Forma de Pagamento</label>
-                                <select class="form-control" id="forma-pagamento" onchange="exibirPainelPagamento()">
-                                    <option value="">Selecione</option>
-                                    <option value="pix">PIX</option>
-                                    <option value="cartao">Cartão de Crédito</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="dados-pagamento">Dados de Pagamento</label>
-                                <input type="text" class="form-control" id="dados-pagamento" placeholder="Digite os dados de pagamento">
-                            </div>
-                            <div id="painelPix">
-                                <p>Use o QR code para pagamento via PIX.</p>
-                                <!-- Adicione o QR code ou instruções para pagamento PIX aqui -->
-                            </div>
-                            <div id="painelCartao">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="cartaoNumero">Número do Cartão</label>
-                                        <input type="text" id="cartaoNumero" name="cartaoNumero" placeholder="Número do Cartão" oninput="validarCartao()" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="cartaoTitular">Nome do Titular</label>
-                                        <input type="text" id="cartaoTitular" name="cartaoTitular" placeholder="Nome do Titular" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="cartaoCodigo">Código de Segurança (CVV)</label>
-                                        <input type="text" id="cartaoCodigo" name="cartaoCodigo" placeholder="CVV" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="cartaoVencimento">Data de Vencimento</label>
-                                        <input type="date" id="cartaoVencimento" name="cartaoVencimento" placeholder="Ex: xx/xxxx" required>
-                                    </div>
-                                </div>
-                                <label for="parcelas">Parcelas</label>
-                                <select id="parcelas" name="parcelas" onchange="calcularParcelas()">
-                                    <option value="1">1x</option>
-                                    <option value="2">2x</option>
-                                    <option value="3">3x</option>
-                                    <option value="4">4x</option>
-                                    <option value="5">5x</option>
-                                </select>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button type="reset" class="btn btn-custom btn-clear justify-content-center">Limpar</button>
-                                <button type="submit" class="btn btn-custom btn-next justify-content-center">Próximo</button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Card 2: Resumo -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <h3>Resumo</h3>
-                        <div class="summary-item">
-                            <span>Hamburguerão Original (2X)</span>
-                            <span>$20.00</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Valor da Entrega</span>
-                            <span>$5.00</span>
-                        </div>
-                        <div class="total summary-item">
-                            <span>Total</span>
-                            <span id="valorTotal">$25.00</span>
-                        </div>
-                        <a href="telaCardapio.html"><button class="btn btn-custom2 btn-continue">Continuar comprando</button></a>
-                        <button class="btn btn-custom2 btn-checkout">Finalizar pedido</button>
-                    </div>
-                </div>
+        <!-- Seletor de Forma de Pagamento -->
+        <div class="payment-form">
+            <h3>Forma de Pagamento</h3>
+            <div class="form-group">
+                <label for="payment-method">Escolha a forma de pagamento:</label>
+                <select class="form-control" id="payment-method" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="pix">PIX</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                </select>
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaI6K5Ko2Vr49KItDnhJ8R8PVy4OHh+T2i4"
-        crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-                integrity="sha384-ChfqqxuZUCnJSK3+d6pBVycJ6Pp+7MtL7e5z7pO2i8hF9yPcu+K4pHf9MKtlsSwv"
-        crossorigin="anonymous"></script>
+        <!-- Formulário de Pagamento para PIX -->
+        <div class="card payment-details" id="pix-details">
+            <h3>Pagamento via PIX</h3>
+            <p>Copie o código abaixo e faça o pagamento usando o seu aplicativo de banco:</p>
+            <p><strong>Chave PIX:</strong> chave@exemplo.com</p>
+            <p><strong>Valor:</strong> R$ <span id="pix-amount">0.00</span></p>
+            <button type="button" class="btn btn-success" onclick="confirmPurchase()">Confirmar Pagamento</button>
+        </div>
 
-        <script>
-                                    function exibirPainelPagamento() {
-                                        var pagamento = document.getElementById('forma-pagamento');
-                                        var painelPix = document.getElementById('painelPix');
-                                        var painelCartao = document.getElementById('painelCartao');
-                                        var valorTotal = document.getElementById('valorTotal');
-                                        var valor = 25.00; // valor total base
+        <!-- Formulário de Pagamento para Cartão de Crédito -->
+        <div class="card payment-details" id="card-details">
+            <h3>Formulário de Pagamento</h3>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Número do Cartão:</label>
+                    <input type="text" class="form-control" id="card-number" placeholder="Número do Cartão" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Data de Validade:</label>
+                    <input type="text" class="form-control" id="expiry-date" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">Código de Segurança:</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                </div>
+                <button type="submit" class="btn btn-success">Finalizar Compra</button>
+            </form>
+        </div>
+    </div>
 
-                                        if (pagamento) {
-                                            if (pagamento.value === 'pix') {
-                                                painelPix.style.display = 'block';
-                                                painelCartao.style.display = 'none';
-                                                valorTotal.textContent = `R$ ${(valor * 0.9).toFixed(2)}`; // 10% de desconto
-                                            } else if (pagamento.value === 'cartao') {
-                                                painelPix.style.display = 'none';
-                                                painelCartao.style.display = 'block';
-                                                calcularParcelas(); // Calcula as parcelas inicialmente
-                                            }
-                                        }
-                                    }
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        function loadCheckout() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let checkoutItems = $('#checkout-items');
+            let checkoutTotal = 0;
 
-                                    function calcularParcelas() {
-                                        var parcelas = document.getElementById('parcelas').value;
-                                        var valorTotal = 25.00; // valor total base
-                                        var valorParcela = valorTotal / parcelas;
-                                        console.log(`Valor da Parcela: R$ ${valorParcela.toFixed(2)} em ${parcelas}x`);
-                                    }
+            checkoutItems.empty();
 
-                                    function validarCartao() {
-                                        // Lógica para validar o número do cartão e exibir a bandeira do cartão
-                                        // Depois coloco isso, n precisa agora
-                                    }
-        </script>
+            cart.forEach(item => {
+                let preco = parseFloat(item.preco);
+                let subtotal = preco * item.quantity;
+                checkoutTotal += subtotal;
 
-    </body>
+                checkoutItems.append(`
+                    <tr>
+                        <td>${item.nome}</td>
+                        <td>R$ ${preco.toFixed(2)}</td>
+                        <td>${item.quantity}</td>
+                        <td>R$ ${subtotal.toFixed(2)}</td>
+                    </tr>
+                `);
+            });
 
+            $('#checkout-total').text(checkoutTotal.toFixed(2));
+            $('#pix-amount').text(checkoutTotal.toFixed(2));
+        }
+
+        $('#payment-method').on('change', function() {
+            var paymentMethod = $(this).val();
+            $('.payment-details').removeClass('active');
+
+            if (paymentMethod === 'pix') {
+                $('#pix-details').addClass('active');
+                $('#card-details').removeClass('active');
+            } else if (paymentMethod === 'cartao') {
+                $('#card-details').addClass('active');
+                $('#pix-details').removeClass('active');
+            }
+        });
+
+        $('#payment-form').on('submit', function(event) {
+            event.preventDefault();
+            confirmPurchase();
+        });
+
+        function confirmPurchase() {
+            // Aqui você pode adicionar lógica para confirmar a compra, como enviar uma solicitação para o servidor
+            // e limpar o carrinho após a confirmação.
+            localStorage.removeItem('cart');
+            alert('Compra confirmada!');
+            window.location.href = '/clientes';
+        }
+
+        $(document).ready(function () {
+            loadCheckout();
+        });
+    </script>
+</body>
 </html>
