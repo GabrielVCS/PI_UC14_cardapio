@@ -4,7 +4,8 @@
  */
 package com.cardapio.cardapioPi.service;
 
-
+import com.cardapio.cardapioPi.data.ClienteEntity;
+import com.cardapio.cardapioPi.data.ClienteRepository;
 import com.cardapio.cardapioPi.data.ProdutoEntity;
 import com.cardapio.cardapioPi.data.ProdutoRepository;
 import java.util.List;
@@ -39,12 +40,22 @@ public class ProdutoService {
 
         prod.setIngredientes(produtoRequest.getIngredientes());
 
+        prod.setCalorias(produtoRequest.getCalorias());
+
+        prod.setCarboidratos(produtoRequest.getCarboidratos());
+
+        prod.setProteinas(produtoRequest.getProteinas());
+
+        prod.setGorduras(produtoRequest.getGorduras());
+
+        prod.setCategoria(produtoRequest.getCategoria());
+
         produtoRepository.save(prod);
 
         return prod;
 
     }
- 
+
     public ProdutoEntity getProdutoId(Integer prodId) {
 
         return produtoRepository.findById(prodId).orElse(null);
